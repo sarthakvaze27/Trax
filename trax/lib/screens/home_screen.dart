@@ -69,12 +69,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('Hello, ${auth.userName?.split(' ').first ?? 'Athlete'} 👋',
-                              style: GoogleFonts.syne(
+                              style: GoogleFonts.inter(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w800,
                                   color: Colors.white)),
                           Text('Book your sport facility today',
-                              style: GoogleFonts.dmSans(
+                              style: GoogleFonts.inter(
                                   fontSize: 12, color: Colors.white60)),
                         ],
                       ),
@@ -98,11 +98,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     child: TextField(
                       onChanged: (v) => setState(() => _search = v),
-                      style: GoogleFonts.dmSans(
+                      style: GoogleFonts.inter(
                           fontSize: 14, color: AppColors.textPrimary),
                       decoration: InputDecoration(
                         hintText: 'Search facilities...',
-                        hintStyle: GoogleFonts.dmSans(
+                        hintStyle: GoogleFonts.inter(
                             fontSize: 14, color: AppColors.textMuted),
                         prefixIcon: const Icon(Icons.search,
                             color: AppColors.textMuted, size: 20),
@@ -145,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       child: Text(s,
-                          style: GoogleFonts.dmSans(
+                          style: GoogleFonts.inter(
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: selected
@@ -166,7 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('${filtered.length} Facilities',
-                      style: GoogleFonts.syne(
+                      style: GoogleFonts.inter(
                           fontSize: 14,
                           fontWeight: FontWeight.w700,
                           color: AppColors.textPrimary)),
@@ -187,7 +187,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       const SizedBox(width: 5),
                       Text('Live',
-                          style: GoogleFonts.dmSans(
+                          style: GoogleFonts.inter(
                               fontSize: 10,
                               fontWeight: FontWeight.w600,
                               color: AppColors.green)),
@@ -267,12 +267,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(f['name'] ?? '',
-                          style: GoogleFonts.syne(
+                          style: GoogleFonts.inter(
                               fontSize: 15,
                               fontWeight: FontWeight.w700,
                               color: Colors.white)),
                       Text(f['location'] ?? '',
-                          style: GoogleFonts.dmSans(
+                          style: GoogleFonts.inter(
                               fontSize: 11, color: Colors.white60)),
                     ],
                   ),
@@ -287,7 +287,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Text(isOpen ? 'OPEN' : 'CLOSED',
-                      style: GoogleFonts.dmSans(
+                      style: GoogleFonts.inter(
                           fontSize: 10,
                           fontWeight: FontWeight.w700,
                           color: Colors.white)),
@@ -308,14 +308,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             TextSpan(
                               text: '₹${f['price_per_hr']}',
-                              style: GoogleFonts.syne(
+                              style: GoogleFonts.inter(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w800,
                                   color: AppColors.green),
                             ),
                             TextSpan(
                               text: '/hr',
-                              style: GoogleFonts.dmSans(
+                              style: GoogleFonts.inter(
                                   fontSize: 12,
                                   color: AppColors.textMuted),
                             ),
@@ -327,7 +327,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             color: AppColors.accent, size: 16),
                         const SizedBox(width: 3),
                         Text('${f['rating']}',
-                            style: GoogleFonts.dmSans(
+                            style: GoogleFonts.inter(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w600,
                                 color: AppColors.textPrimary)),
@@ -352,7 +352,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       amenities.take(3).join(' · '),
-                      style: GoogleFonts.dmSans(
+                      style: GoogleFonts.inter(
                           fontSize: 11, color: AppColors.textMuted),
                     ),
                   ),
@@ -373,7 +373,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               borderRadius: BorderRadius.circular(12)),
                         ),
                         child: Text('Book Now',
-                            style: GoogleFonts.dmSans(
+                            style: GoogleFonts.inter(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white)),
@@ -395,7 +395,7 @@ class _HomeScreenState extends State<HomeScreen> {
             color: AppColors.green50,
             borderRadius: BorderRadius.circular(6)),
         child: Text(label,
-            style: GoogleFonts.dmSans(
+            style: GoogleFonts.inter(
                 fontSize: 10,
                 fontWeight: FontWeight.w500,
                 color: AppColors.green)),

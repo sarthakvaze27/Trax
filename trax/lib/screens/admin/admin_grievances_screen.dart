@@ -67,7 +67,7 @@ class _AdminGrievancesScreenState extends State<AdminGrievancesScreen> {
       backgroundColor: AppColors.surface,
       appBar: AppBar(
         title: Text('Grievances',
-            style: GoogleFonts.syne(
+            style: GoogleFonts.inter(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
                 color: Colors.white)),
@@ -102,7 +102,7 @@ class _AdminGrievancesScreenState extends State<AdminGrievancesScreen> {
                           s == 'in_progress'
                               ? 'IN PROGRESS'
                               : s.toUpperCase(),
-                          style: GoogleFonts.dmSans(
+                          style: GoogleFonts.inter(
                             fontSize: 11,
                             fontWeight: FontWeight.w600,
                             color: _filter == s
@@ -135,7 +135,7 @@ class _AdminGrievancesScreenState extends State<AdminGrievancesScreen> {
                                     size: 48, color: AppColors.green),
                                 const SizedBox(height: 12),
                                 Text('No grievances here!',
-                                    style: GoogleFonts.syne(
+                                    style: GoogleFonts.inter(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w700,
                                         color: AppColors.textPrimary)),
@@ -191,7 +191,7 @@ class _AdminGrievancesScreenState extends State<AdminGrievancesScreen> {
               children: [
                 Expanded(
                   child: Text(g['title'] ?? '',
-                      style: GoogleFonts.syne(
+                      style: GoogleFonts.inter(
                           fontSize: 14,
                           fontWeight: FontWeight.w700,
                           color: AppColors.textPrimary)),
@@ -204,7 +204,7 @@ class _AdminGrievancesScreenState extends State<AdminGrievancesScreen> {
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: Text(priority.toUpperCase(),
-                      style: GoogleFonts.dmSans(
+                      style: GoogleFonts.inter(
                           fontSize: 9,
                           fontWeight: FontWeight.w700,
                           color: priorityColor)),
@@ -214,7 +214,7 @@ class _AdminGrievancesScreenState extends State<AdminGrievancesScreen> {
             if (g['description'] != null) ...[
               const SizedBox(height: 6),
               Text(g['description'],
-                  style: GoogleFonts.dmSans(
+                  style: GoogleFonts.inter(
                       fontSize: 12, color: AppColors.textSecond)),
             ],
             const SizedBox(height: 8),
@@ -223,17 +223,17 @@ class _AdminGrievancesScreenState extends State<AdminGrievancesScreen> {
                   size: 12, color: AppColors.textMuted),
               const SizedBox(width: 4),
               Text(g['users']?['name'] ?? 'Anonymous',
-                  style: GoogleFonts.dmSans(
+                  style: GoogleFonts.inter(
                       fontSize: 11, color: AppColors.textMuted)),
               if (g['facilities']?['name'] != null) ...[
                 Text('  ·  ',
-                    style: GoogleFonts.dmSans(
+                    style: GoogleFonts.inter(
                         fontSize: 11, color: AppColors.textMuted)),
                 const Icon(Icons.stadium_outlined,
                     size: 12, color: AppColors.textMuted),
                 const SizedBox(width: 4),
                 Text(g['facilities']!['name'],
-                    style: GoogleFonts.dmSans(
+                    style: GoogleFonts.inter(
                         fontSize: 11, color: AppColors.textMuted)),
               ],
             ]),
@@ -252,7 +252,7 @@ class _AdminGrievancesScreenState extends State<AdminGrievancesScreen> {
                     status == 'in_progress'
                         ? 'IN PROGRESS'
                         : status.toUpperCase(),
-                    style: GoogleFonts.dmSans(
+                    style: GoogleFonts.inter(
                         fontSize: 10,
                         fontWeight: FontWeight.w700,
                         color: statusColor),
@@ -274,7 +274,7 @@ class _AdminGrievancesScreenState extends State<AdminGrievancesScreen> {
                         color: AppColors.green, size: 14),
                     const SizedBox(width: 4),
                     Text('Resolved',
-                        style: GoogleFonts.dmSans(
+                        style: GoogleFonts.inter(
                             fontSize: 12,
                             color: AppColors.green,
                             fontWeight: FontWeight.w600)),
@@ -299,7 +299,7 @@ class _AdminGrievancesScreenState extends State<AdminGrievancesScreen> {
           border: Border.all(color: color.withValues(alpha: 0.3)),
         ),
         child: Text(label,
-            style: GoogleFonts.dmSans(
+            style: GoogleFonts.inter(
                 fontSize: 12,
                 fontWeight: FontWeight.w600,
                 color: color)),

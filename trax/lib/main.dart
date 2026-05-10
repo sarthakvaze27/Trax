@@ -31,20 +31,74 @@ class TraxApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           useMaterial3: true,
-          colorSchemeSeed: AppColors.green,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: AppColors.green,
+            primary: AppColors.green,
+            secondary: AppColors.accent,
+            surface: AppColors.surface,
+          ),
           scaffoldBackgroundColor: AppColors.surface,
-          textTheme: GoogleFonts.dmSansTextTheme(),
-          appBarTheme: const AppBarTheme(
+          textTheme: GoogleFonts.interTextTheme().apply(
+            bodyColor: AppColors.textPrimary,
+            displayColor: AppColors.textPrimary,
+          ),
+          appBarTheme: AppBarTheme(
             backgroundColor: AppColors.green,
             foregroundColor: Colors.white,
             elevation: 0,
+            centerTitle: false,
+            titleTextStyle: GoogleFonts.inter(
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+            ),
+          ),
+          navigationBarTheme: NavigationBarThemeData(
+            backgroundColor: AppColors.card,
+            indicatorColor: AppColors.green50,
+            labelTextStyle: WidgetStateProperty.resolveWith(
+              (states) => GoogleFonts.inter(
+                fontSize: 11,
+                fontWeight: states.contains(WidgetState.selected)
+                    ? FontWeight.w700
+                    : FontWeight.w500,
+                color: states.contains(WidgetState.selected)
+                    ? AppColors.green
+                    : AppColors.textMuted,
+              ),
+            ),
+          ),
+          cardTheme: CardThemeData(
+            color: AppColors.card,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+              side: const BorderSide(color: AppColors.border),
+            ),
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
               foregroundColor: Colors.white,
               backgroundColor: AppColors.green,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14)),
+                  borderRadius: BorderRadius.circular(12)),
+              textStyle: GoogleFonts.inter(fontWeight: FontWeight.w700),
+            ),
+          ),
+          inputDecorationTheme: InputDecorationTheme(
+            filled: true,
+            fillColor: AppColors.card,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: const BorderSide(color: AppColors.border),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: const BorderSide(color: AppColors.border),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: const BorderSide(color: AppColors.green, width: 1.4),
             ),
           ),
         ),

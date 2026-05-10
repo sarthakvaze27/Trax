@@ -50,7 +50,7 @@ class _AdminTournamentsScreenState extends State<AdminTournamentsScreen> {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20)),
           title: Text('New Tournament',
-              style: GoogleFonts.syne(fontWeight: FontWeight.w700)),
+              style: GoogleFonts.inter(fontWeight: FontWeight.w700)),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -68,7 +68,7 @@ class _AdminTournamentsScreenState extends State<AdminTournamentsScreen> {
                   const Icon(Icons.groups, color: AppColors.textMuted, size: 18),
                   const SizedBox(width: 8),
                   Text('Max Teams:',
-                      style: GoogleFonts.dmSans(
+                      style: GoogleFonts.inter(
                           fontSize: 13, color: AppColors.textSecond)),
                   const Spacer(),
                   DropdownButton<int>(
@@ -76,7 +76,7 @@ class _AdminTournamentsScreenState extends State<AdminTournamentsScreen> {
                     items: [8, 16, 32, 64].map((v) => DropdownMenuItem(
                         value: v,
                         child: Text('$v',
-                            style: GoogleFonts.dmSans()))).toList(),
+                            style: GoogleFonts.inter()))).toList(),
                     onChanged: (v) =>
                         setDlg(() => maxTeams = v ?? 16),
                   ),
@@ -97,7 +97,7 @@ class _AdminTournamentsScreenState extends State<AdminTournamentsScreen> {
             TextButton(
               onPressed: () => Navigator.pop(ctx),
               child: Text('Cancel',
-                  style: GoogleFonts.dmSans(color: AppColors.textSecond)),
+                  style: GoogleFonts.inter(color: AppColors.textSecond)),
             ),
             ElevatedButton(
               onPressed: () async {
@@ -129,7 +129,7 @@ class _AdminTournamentsScreenState extends State<AdminTournamentsScreen> {
               style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.green),
               child: Text('Create',
-                  style: GoogleFonts.dmSans(
+                  style: GoogleFonts.inter(
                       fontWeight: FontWeight.w700, color: Colors.white)),
             ),
           ],
@@ -144,7 +144,7 @@ class _AdminTournamentsScreenState extends State<AdminTournamentsScreen> {
       backgroundColor: AppColors.surface,
       appBar: AppBar(
         title: Text('Tournaments',
-            style: GoogleFonts.syne(
+            style: GoogleFonts.inter(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
                 color: Colors.white)),
@@ -163,7 +163,7 @@ class _AdminTournamentsScreenState extends State<AdminTournamentsScreen> {
         backgroundColor: AppColors.accent,
         icon: const Icon(Icons.add, color: Colors.white),
         label: Text('New Tournament',
-            style: GoogleFonts.dmSans(
+            style: GoogleFonts.inter(
                 fontWeight: FontWeight.w700, color: Colors.white)),
       ),
       body: _loading
@@ -181,12 +181,12 @@ class _AdminTournamentsScreenState extends State<AdminTournamentsScreen> {
                               size: 56, color: AppColors.textMuted),
                           const SizedBox(height: 12),
                           Text('No tournaments yet',
-                              style: GoogleFonts.syne(
+                              style: GoogleFonts.inter(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700)),
                           const SizedBox(height: 4),
                           Text('Tap + to create one',
-                              style: GoogleFonts.dmSans(
+                              style: GoogleFonts.inter(
                                   fontSize: 13,
                                   color: AppColors.textMuted)),
                         ],
@@ -248,12 +248,12 @@ class _AdminTournamentsScreenState extends State<AdminTournamentsScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(t['name'] ?? '',
-                        style: GoogleFonts.syne(
+                        style: GoogleFonts.inter(
                             fontSize: 14,
                             fontWeight: FontWeight.w700,
                             color: Colors.white)),
                     Text('${t['sport']} · ${t['location'] ?? ''}',
-                        style: GoogleFonts.dmSans(
+                        style: GoogleFonts.inter(
                             fontSize: 11, color: Colors.white60)),
                   ],
                 ),
@@ -266,7 +266,7 @@ class _AdminTournamentsScreenState extends State<AdminTournamentsScreen> {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(status.toUpperCase(),
-                    style: GoogleFonts.dmSans(
+                    style: GoogleFonts.inter(
                         fontSize: 10,
                         fontWeight: FontWeight.w700,
                         color: Colors.white)),
@@ -297,10 +297,10 @@ class _AdminTournamentsScreenState extends State<AdminTournamentsScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('Registrations: $reg / $max',
-                        style: GoogleFonts.dmSans(
+                        style: GoogleFonts.inter(
                             fontSize: 12, color: AppColors.textSecond)),
                     Text('${max > 0 ? (reg / max * 100).toStringAsFixed(0) : 0}%',
-                        style: GoogleFonts.syne(
+                        style: GoogleFonts.inter(
                             fontSize: 12,
                             fontWeight: FontWeight.w700,
                             color: AppColors.green)),
@@ -349,7 +349,7 @@ class _AdminTournamentsScreenState extends State<AdminTournamentsScreen> {
                                   color: AppColors.green, size: 14),
                               const SizedBox(width: 6),
                               Text('Completed',
-                                  style: GoogleFonts.dmSans(
+                                  style: GoogleFonts.inter(
                                       fontSize: 12,
                                       color: AppColors.green,
                                       fontWeight: FontWeight.w600)),
@@ -392,7 +392,7 @@ class _AdminTournamentsScreenState extends State<AdminTournamentsScreen> {
       Icon(icon, size: 13, color: AppColors.textSecond),
       const SizedBox(width: 5),
       Text(text,
-          style: GoogleFonts.dmSans(
+          style: GoogleFonts.inter(
               fontSize: 12, color: AppColors.textSecond)),
     ]);
   }
@@ -409,7 +409,7 @@ class _AdminTournamentsScreenState extends State<AdminTournamentsScreen> {
         ),
         child: Center(
           child: Text(label,
-              style: GoogleFonts.dmSans(
+              style: GoogleFonts.inter(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
                   color: color)),
@@ -428,13 +428,13 @@ class _AdminTournamentsScreenState extends State<AdminTournamentsScreen> {
       ),
       child: TextField(
         controller: ctrl,
-        style: GoogleFonts.dmSans(
+        style: GoogleFonts.inter(
             fontSize: 14, color: AppColors.textPrimary),
         decoration: InputDecoration(
           prefixIcon: Icon(icon, color: AppColors.textMuted, size: 18),
           hintText: hint,
           hintStyle:
-              GoogleFonts.dmSans(fontSize: 14, color: AppColors.textMuted),
+              GoogleFonts.inter(fontSize: 14, color: AppColors.textMuted),
           border: InputBorder.none,
           contentPadding: const EdgeInsets.symmetric(vertical: 12),
         ),
@@ -474,7 +474,7 @@ class _AdminTournamentsScreenState extends State<AdminTournamentsScreen> {
               color: AppColors.green, size: 16),
           const SizedBox(width: 8),
           Text('$label: ${current.toString().substring(0, 10)}',
-              style: GoogleFonts.dmSans(
+              style: GoogleFonts.inter(
                   fontSize: 13, color: AppColors.textPrimary)),
           const Spacer(),
           const Icon(Icons.edit_calendar, color: AppColors.textMuted, size: 14),

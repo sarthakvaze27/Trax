@@ -69,13 +69,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Create Account',
-                style: GoogleFonts.syne(
+                style: GoogleFonts.inter(
                     fontSize: 24,
                     fontWeight: FontWeight.w800,
                     color: AppColors.textPrimary)),
             const SizedBox(height: 4),
             Text('Join Trax and book facilities across Goa',
-                style: GoogleFonts.dmSans(
+                style: GoogleFonts.inter(
                     fontSize: 13, color: AppColors.textMuted)),
             const SizedBox(height: 28),
 
@@ -97,7 +97,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: TextField(
                 controller: _passwordCtrl,
                 obscureText: _obscure,
-                style: GoogleFonts.dmSans(
+                style: GoogleFonts.inter(
                     fontSize: 14, color: AppColors.textPrimary),
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.lock_outline,
@@ -109,7 +109,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     onPressed: () => setState(() => _obscure = !_obscure),
                   ),
                   hintText: 'Password',
-                  hintStyle: GoogleFonts.dmSans(
+                  hintStyle: GoogleFonts.inter(
                       fontSize: 14, color: AppColors.textMuted),
                   border: InputBorder.none,
                   contentPadding: const EdgeInsets.symmetric(vertical: 16),
@@ -125,7 +125,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     size: 16, color: AppColors.textMuted),
                 const SizedBox(width: 6),
                 Text('Registering as Admin?',
-                    style: GoogleFonts.dmSans(
+                    style: GoogleFonts.inter(
                         fontSize: 12,
                         color: AppColors.textMuted,
                         fontWeight: FontWeight.w600)),
@@ -142,7 +142,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               _field(_adminCtrl, 'Admin Secret Code', Icons.vpn_key_outlined),
               const SizedBox(height: 4),
               Text('Get this code from SAG IT department',
-                  style: GoogleFonts.dmSans(
+                  style: GoogleFonts.inter(
                       fontSize: 11, color: AppColors.textMuted)),
             ],
 
@@ -160,7 +160,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(_error!,
-                        style: GoogleFonts.dmSans(
+                        style: GoogleFonts.inter(
                             fontSize: 12, color: AppColors.red)),
                   ),
                 ]),
@@ -181,7 +181,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: auth.loading
                     ? const CircularProgressIndicator(color: Colors.white)
                     : Text('Create Account',
-                        style: GoogleFonts.syne(
+                        style: GoogleFonts.inter(
                             fontSize: 16, fontWeight: FontWeight.w700)),
               ),
             ),
@@ -202,12 +202,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
       child: TextField(
         controller: ctrl,
         keyboardType: inputType,
-        style: GoogleFonts.dmSans(fontSize: 14, color: AppColors.textPrimary),
+        style: GoogleFonts.inter(fontSize: 14, color: AppColors.textPrimary),
         decoration: InputDecoration(
           prefixIcon: Icon(icon, color: AppColors.textMuted, size: 20),
           hintText: hint,
           hintStyle:
-              GoogleFonts.dmSans(fontSize: 14, color: AppColors.textMuted),
+              GoogleFonts.inter(fontSize: 14, color: AppColors.textMuted),
           border: InputBorder.none,
           contentPadding: const EdgeInsets.symmetric(vertical: 16),
         ),

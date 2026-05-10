@@ -48,20 +48,20 @@ class _MyBookingsScreenState extends State<MyBookingsScreen>
       builder: (_) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Text('Cancel Booking',
-            style: GoogleFonts.syne(fontWeight: FontWeight.w700)),
+            style: GoogleFonts.inter(fontWeight: FontWeight.w700)),
         content: Text(
             'Are you sure you want to cancel? A simulated refund will be initiated.',
-            style: GoogleFonts.dmSans(fontSize: 13)),
+            style: GoogleFonts.inter(fontSize: 13)),
         actions: [
           TextButton(
               onPressed: () => Navigator.pop(context, false),
               child: Text('No',
-                  style: GoogleFonts.dmSans(color: AppColors.textSecond))),
+                  style: GoogleFonts.inter(color: AppColors.textSecond))),
           ElevatedButton(
               onPressed: () => Navigator.pop(context, true),
               style: ElevatedButton.styleFrom(backgroundColor: AppColors.red),
               child: Text('Cancel Booking',
-                  style: GoogleFonts.dmSans(color: Colors.white))),
+                  style: GoogleFonts.inter(color: Colors.white))),
         ],
       ),
     );
@@ -97,7 +97,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen>
       backgroundColor: AppColors.surface,
       appBar: AppBar(
         title: Text('My Bookings',
-            style: GoogleFonts.syne(
+            style: GoogleFonts.inter(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
                 color: Colors.white)),
@@ -109,7 +109,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen>
           indicatorColor: Colors.white,
           labelColor: Colors.white,
           unselectedLabelColor: Colors.white60,
-          labelStyle: GoogleFonts.dmSans(fontWeight: FontWeight.w600),
+          labelStyle: GoogleFonts.inter(fontWeight: FontWeight.w600),
           tabs: [
             Tab(text: 'Upcoming (${upcoming.length})'),
             Tab(text: 'Past (${past.length})'),
@@ -143,14 +143,14 @@ class _MyBookingsScreenState extends State<MyBookingsScreen>
                 size: 56, color: AppColors.textMuted),
             const SizedBox(height: 12),
             Text('No bookings yet',
-                style: GoogleFonts.syne(
+                style: GoogleFonts.inter(
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
                     color: AppColors.textPrimary)),
             const SizedBox(height: 4),
             Text('Book a facility from the Home tab',
                 style:
-                    GoogleFonts.dmSans(fontSize: 13, color: AppColors.textMuted)),
+                    GoogleFonts.inter(fontSize: 13, color: AppColors.textMuted)),
           ],
         ),
       );
@@ -195,7 +195,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen>
                 Expanded(
                   child: Text(
                     b['facilities']?['name'] ?? 'Facility',
-                    style: GoogleFonts.syne(
+                    style: GoogleFonts.inter(
                         fontSize: 15,
                         fontWeight: FontWeight.w700,
                         color: AppColors.textPrimary),
@@ -209,7 +209,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen>
                   ),
                   child: Text(
                     (b['status'] as String).toUpperCase(),
-                    style: GoogleFonts.dmSans(
+                    style: GoogleFonts.inter(
                         fontSize: 10,
                         fontWeight: FontWeight.w700,
                         color: statusColor),
@@ -223,7 +223,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen>
                   size: 13, color: AppColors.textSecond),
               const SizedBox(width: 4),
               Text(b['facilities']?['location'] ?? '',
-                  style: GoogleFonts.dmSans(
+                  style: GoogleFonts.inter(
                       fontSize: 12, color: AppColors.textSecond)),
             ]),
             const SizedBox(height: 6),
@@ -232,7 +232,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen>
                   size: 13, color: AppColors.textSecond),
               const SizedBox(width: 4),
               Text('${b['date']}  ·  ${b['time_label']}',
-                  style: GoogleFonts.dmSans(
+                  style: GoogleFonts.inter(
                       fontSize: 12, color: AppColors.textSecond)),
             ]),
             const SizedBox(height: 10),
@@ -254,7 +254,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen>
                           size: 14, color: AppColors.textSecond),
                       const SizedBox(width: 4),
                       Text(b['qr_code'],
-                          style: GoogleFonts.dmSans(
+                          style: GoogleFonts.inter(
                               fontSize: 10,
                               fontWeight: FontWeight.w600,
                               color: AppColors.textSecond,
@@ -264,7 +264,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen>
                 ],
                 Row(children: [
                   Text('₹${b['total_amount']}',
-                      style: GoogleFonts.syne(
+                      style: GoogleFonts.inter(
                           fontSize: 16,
                           fontWeight: FontWeight.w800,
                           color: AppColors.green)),
@@ -280,7 +280,7 @@ class _MyBookingsScreenState extends State<MyBookingsScreen>
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Text('Cancel',
-                            style: GoogleFonts.dmSans(
+                            style: GoogleFonts.inter(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w600,
                                 color: AppColors.red)),

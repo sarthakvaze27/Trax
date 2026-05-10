@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 typedef WsEventCallback = void Function(String event, Map<String, dynamic> data);
 
 class WebSocketService {
-  static const String _wsBase = 'ws://10.16.9.52:8000/ws';
+  static const String _wsBase = 'ws://192.168.137.1:8000/ws';
 
   WebSocketChannel? _updateChannel;
   WebSocketChannel? _chatChannel;

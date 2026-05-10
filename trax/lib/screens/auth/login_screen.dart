@@ -66,25 +66,25 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 20),
               Center(
                 child: Text('Trax',
-                    style: GoogleFonts.syne(
+                    style: GoogleFonts.inter(
                         fontSize: 28,
                         fontWeight: FontWeight.w800,
                         color: AppColors.textPrimary)),
               ),
               Center(
                 child: Text('Sports Authority of Goa',
-                    style: GoogleFonts.dmSans(
+                    style: GoogleFonts.inter(
                         fontSize: 13, color: AppColors.textMuted)),
               ),
               const SizedBox(height: 40),
               Text('Welcome back',
-                  style: GoogleFonts.syne(
+                  style: GoogleFonts.inter(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
                       color: AppColors.textPrimary)),
               const SizedBox(height: 4),
               Text('Login as User or Admin — same screen',
-                  style: GoogleFonts.dmSans(
+                  style: GoogleFonts.inter(
                       fontSize: 13, color: AppColors.textMuted)),
               const SizedBox(height: 28),
 
@@ -101,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: TextField(
                   controller: _passwordCtrl,
                   obscureText: _obscure,
-                  style: GoogleFonts.dmSans(
+                  style: GoogleFonts.inter(
                       fontSize: 14, color: AppColors.textPrimary),
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.lock_outline,
@@ -113,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () => setState(() => _obscure = !_obscure),
                     ),
                     hintText: 'Password',
-                    hintStyle: GoogleFonts.dmSans(
+                    hintStyle: GoogleFonts.inter(
                         fontSize: 14, color: AppColors.textMuted),
                     border: InputBorder.none,
                     contentPadding: const EdgeInsets.symmetric(vertical: 16),
@@ -136,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(_error!,
-                          style: GoogleFonts.dmSans(
+                          style: GoogleFonts.inter(
                               fontSize: 12, color: AppColors.red)),
                     ),
                   ]),
@@ -157,7 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: auth.loading
                       ? const CircularProgressIndicator(color: Colors.white)
                       : Text('Sign In',
-                          style: GoogleFonts.syne(
+                          style: GoogleFonts.inter(
                               fontSize: 16, fontWeight: FontWeight.w700)),
                 ),
               ),
@@ -169,12 +169,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: RichText(
                     text: TextSpan(
                       text: "Don't have an account? ",
-                      style: GoogleFonts.dmSans(
+                      style: GoogleFonts.inter(
                           fontSize: 13, color: AppColors.textMuted),
                       children: [
                         TextSpan(
                           text: 'Register',
-                          style: GoogleFonts.dmSans(
+                          style: GoogleFonts.inter(
                               fontSize: 13,
                               color: AppColors.green,
                               fontWeight: FontWeight.w700),
@@ -202,12 +202,12 @@ class _LoginScreenState extends State<LoginScreen> {
       child: TextField(
         controller: ctrl,
         keyboardType: inputType,
-        style: GoogleFonts.dmSans(fontSize: 14, color: AppColors.textPrimary),
+        style: GoogleFonts.inter(fontSize: 14, color: AppColors.textPrimary),
         decoration: InputDecoration(
           prefixIcon: Icon(icon, color: AppColors.textMuted, size: 20),
           hintText: hint,
           hintStyle:
-              GoogleFonts.dmSans(fontSize: 14, color: AppColors.textMuted),
+              GoogleFonts.inter(fontSize: 14, color: AppColors.textMuted),
           border: InputBorder.none,
           contentPadding: const EdgeInsets.symmetric(vertical: 16),
         ),

@@ -101,7 +101,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
               radius: 18,
               backgroundColor: widget.avatarColor.withValues(alpha: 0.7),
               child: Text(widget.avatarInitial,
-                  style: GoogleFonts.syne(
+                  style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w800,
                       color: Colors.white)),
@@ -112,12 +112,12 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(widget.title,
-                      style: GoogleFonts.syne(
+                      style: GoogleFonts.inter(
                           fontSize: 15,
                           fontWeight: FontWeight.w700,
                           color: Colors.white)),
                   Text(widget.subtitle,
-                      style: GoogleFonts.dmSans(
+                      style: GoogleFonts.inter(
                           fontSize: 11, color: Colors.white60)),
                 ],
               ),
@@ -144,13 +144,13 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
                             size: 48, color: AppColors.textMuted),
                         const SizedBox(height: 12),
                         Text('No messages yet',
-                            style: GoogleFonts.syne(
+                            style: GoogleFonts.inter(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w700,
                                 color: AppColors.textPrimary)),
                         const SizedBox(height: 4),
                         Text('Start the conversation!',
-                            style: GoogleFonts.dmSans(
+                            style: GoogleFonts.inter(
                                 fontSize: 13,
                                 color: AppColors.textMuted)),
                       ],
@@ -194,11 +194,11 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
                       controller: _msgCtrl,
                       maxLines: null,
                       keyboardType: TextInputType.multiline,
-                      style: GoogleFonts.dmSans(
+                      style: GoogleFonts.inter(
                           fontSize: 14, color: AppColors.textPrimary),
                       decoration: InputDecoration(
                         hintText: 'Type a message...',
-                        hintStyle: GoogleFonts.dmSans(
+                        hintStyle: GoogleFonts.inter(
                             fontSize: 14, color: AppColors.textMuted),
                         border: InputBorder.none,
                         contentPadding: const EdgeInsets.symmetric(
@@ -259,7 +259,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
               backgroundColor: AppColors.green.withValues(alpha: 0.2),
               child: Text(
                 (m['sender_id'] as String? ?? 'U')[0].toUpperCase(),
-                style: GoogleFonts.syne(
+                style: GoogleFonts.inter(
                     fontSize: 10,
                     fontWeight: FontWeight.w700,
                     color: AppColors.green),
@@ -291,7 +291,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(text,
-                      style: GoogleFonts.dmSans(
+                      style: GoogleFonts.inter(
                           fontSize: 14,
                           color: isMe
                               ? Colors.white
@@ -299,7 +299,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
                           height: 1.4)),
                   const SizedBox(height: 4),
                   Text(timeStr,
-                      style: GoogleFonts.dmSans(
+                      style: GoogleFonts.inter(
                           fontSize: 9,
                           color: isMe
                               ? Colors.white54

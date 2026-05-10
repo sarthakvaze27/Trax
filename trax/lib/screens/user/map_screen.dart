@@ -110,12 +110,12 @@ class _MapScreenState extends State<MapScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('Facility Map',
-                            style: GoogleFonts.syne(
+                            style: GoogleFonts.inter(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w800,
                                 color: Colors.white)),
                         Text('${facilities.length} SAG facilities across Goa',
-                            style: GoogleFonts.dmSans(
+                            style: GoogleFonts.inter(
                                 fontSize: 12, color: Colors.white70)),
                       ],
                     ),
@@ -178,7 +178,7 @@ class _MapScreenState extends State<MapScreen> {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text('Tap a marker to view facility',
-                      style: GoogleFonts.dmSans(
+                      style: GoogleFonts.inter(
                           fontSize: 12, color: Colors.white)),
                 ),
               ),
@@ -228,12 +228,12 @@ class _MapScreenState extends State<MapScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(f['name'] ?? '',
-                          style: GoogleFonts.syne(
+                          style: GoogleFonts.inter(
                               fontSize: 15,
                               fontWeight: FontWeight.w700,
                               color: AppColors.textPrimary)),
                       Text(f['location'] ?? '',
-                          style: GoogleFonts.dmSans(
+                          style: GoogleFonts.inter(
                               fontSize: 12,
                               color: AppColors.textSecond)),
                       const SizedBox(height: 4),
@@ -248,7 +248,7 @@ class _MapScreenState extends State<MapScreen> {
                               borderRadius: BorderRadius.circular(4),
                             ),
                             child: Text(s.toString(),
-                                style: GoogleFonts.dmSans(
+                                style: GoogleFonts.inter(
                                     fontSize: 9,
                                     color: AppColors.green,
                                     fontWeight: FontWeight.w600)),
@@ -275,12 +275,12 @@ class _MapScreenState extends State<MapScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('₹${f['price_per_hr']}/hr',
-                        style: GoogleFonts.syne(
+                        style: GoogleFonts.inter(
                             fontSize: 16,
                             fontWeight: FontWeight.w800,
                             color: AppColors.green)),
                     Text('⭐ ${f['rating']} · ${f['distance_km']} km',
-                        style: GoogleFonts.dmSans(
+                        style: GoogleFonts.inter(
                             fontSize: 11,
                             color: AppColors.textMuted)),
                   ],
@@ -296,7 +296,7 @@ class _MapScreenState extends State<MapScreen> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(isOpen ? '● OPEN' : '● CLOSED',
-                        style: GoogleFonts.dmSans(
+                        style: GoogleFonts.inter(
                             fontSize: 10,
                             fontWeight: FontWeight.w700,
                             color: isOpen
@@ -320,7 +320,7 @@ class _MapScreenState extends State<MapScreen> {
                             borderRadius: BorderRadius.circular(10)),
                       ),
                       child: Text('Book',
-                          style: GoogleFonts.syne(
+                          style: GoogleFonts.inter(
                               fontSize: 13,
                               fontWeight: FontWeight.w700)),
                     ),
@@ -352,7 +352,7 @@ class _MapScreenState extends State<MapScreen> {
         ),
         const SizedBox(width: 5),
         Text(label,
-            style: GoogleFonts.dmSans(
+            style: GoogleFonts.inter(
                 fontSize: 10, fontWeight: FontWeight.w600)),
       ]),
     );

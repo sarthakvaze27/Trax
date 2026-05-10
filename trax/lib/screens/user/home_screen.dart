@@ -57,14 +57,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   // Greeting
                   Text('Good day,',
-                      style: GoogleFonts.dmSans(
+                      style: GoogleFonts.inter(
                           fontSize: 13, color: Colors.white60)),
                   const SizedBox(height: 2),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('${auth.userName ?? 'Athlete'} 👋',
-                          style: GoogleFonts.syne(
+                          style: GoogleFonts.inter(
                               fontSize: 22,
                               fontWeight: FontWeight.w800,
                               color: Colors.white)),
@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: Color(0xFFF5A623), size: 14),
                           const SizedBox(width: 4),
                           Text('${auth.user?['loyalty_points'] ?? 0} pts',
-                              style: GoogleFonts.dmSans(
+                              style: GoogleFonts.inter(
                                   fontSize: 12,
                                   color: Colors.white,
                                   fontWeight: FontWeight.w600)),
@@ -104,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Colors.white60, size: 18),
                       const SizedBox(width: 8),
                       Text('Find facilities in Goa...',
-                          style: GoogleFonts.dmSans(
+                          style: GoogleFonts.inter(
                               fontSize: 14, color: Colors.white54)),
                     ]),
                   ),
@@ -151,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       child: Text(
                         '${_sportEmojis[s]} $s',
-                        style: GoogleFonts.dmSans(
+                        style: GoogleFonts.inter(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
                           color: active
@@ -174,12 +174,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('Nearby Facilities',
-                      style: GoogleFonts.syne(
+                      style: GoogleFonts.inter(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
                           color: AppColors.textPrimary)),
                   Text('${filtered.length} found',
-                      style: GoogleFonts.dmSans(
+                      style: GoogleFonts.inter(
                           fontSize: 12, color: AppColors.textMuted)),
                 ],
               ),
@@ -207,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 size: 48, color: AppColors.textMuted),
                             const SizedBox(height: 12),
                             Text('No facilities found',
-                                style: GoogleFonts.syne(
+                                style: GoogleFonts.inter(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w700)),
                           ]),
@@ -292,7 +292,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(f['sag_tag'] ?? '',
-                          style: GoogleFonts.dmSans(
+                          style: GoogleFonts.inter(
                               fontSize: 9,
                               color: Colors.white,
                               fontWeight: FontWeight.w600)),
@@ -312,7 +312,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(isOpen ? 'OPEN' : 'CLOSED',
-                          style: GoogleFonts.dmSans(
+                          style: GoogleFonts.inter(
                               fontSize: 9,
                               color: Colors.white,
                               fontWeight: FontWeight.w700)),
@@ -333,13 +333,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Expanded(
                         child: Text(f['name'] ?? '',
-                            style: GoogleFonts.syne(
+                            style: GoogleFonts.inter(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w700,
                                 color: AppColors.textPrimary)),
                       ),
                       Text('⭐ ${f['rating']}',
-                          style: GoogleFonts.dmSans(
+                          style: GoogleFonts.inter(
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color: AppColors.accent)),
@@ -352,7 +352,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(width: 3),
                     Text(
                         '${f['location']} · ${f['distance_km']} km away',
-                        style: GoogleFonts.dmSans(
+                        style: GoogleFonts.inter(
                             fontSize: 11,
                             color: AppColors.textSecond)),
                   ]),
@@ -372,10 +372,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Utilization',
-                          style: GoogleFonts.dmSans(
+                          style: GoogleFonts.inter(
                               fontSize: 10, color: AppColors.textMuted)),
                       Text('$util%',
-                          style: GoogleFonts.dmSans(
+                          style: GoogleFonts.inter(
                               fontSize: 10,
                               fontWeight: FontWeight.w600,
                               color: util > 80
@@ -406,12 +406,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('₹${f['price_per_hr']}',
-                              style: GoogleFonts.syne(
+                              style: GoogleFonts.inter(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w800,
                                   color: AppColors.green)),
                           Text('/hour',
-                              style: GoogleFonts.dmSans(
+                              style: GoogleFonts.inter(
                                   fontSize: 10,
                                   color: AppColors.textMuted)),
                         ],
@@ -434,7 +434,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     BorderRadius.circular(12)),
                           ),
                           child: Text('Book Now',
-                              style: GoogleFonts.syne(
+                              style: GoogleFonts.inter(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w700)),
                         )
@@ -447,7 +447,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Text('Closed',
-                              style: GoogleFonts.dmSans(
+                              style: GoogleFonts.inter(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w600,
                                   color: AppColors.red)),
@@ -471,7 +471,7 @@ class _HomeScreenState extends State<HomeScreen> {
         borderRadius: BorderRadius.circular(6),
       ),
       child: Text(label,
-          style: GoogleFonts.dmSans(
+          style: GoogleFonts.inter(
               fontSize: 10,
               fontWeight: FontWeight.w600,
               color: AppColors.green)),
@@ -483,12 +483,12 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         children: [
           Text(value,
-              style: GoogleFonts.syne(
+              style: GoogleFonts.inter(
                   fontSize: 20,
                   fontWeight: FontWeight.w800,
                   color: Colors.white)),
           Text(label,
-              style: GoogleFonts.dmSans(
+              style: GoogleFonts.inter(
                   fontSize: 10, color: Colors.white60)),
         ],
       ),

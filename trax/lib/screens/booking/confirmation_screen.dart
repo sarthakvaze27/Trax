@@ -46,13 +46,13 @@ class ConfirmationScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Text('Booking Confirmed!',
-                  style: GoogleFonts.syne(
+                  style: GoogleFonts.inter(
                       fontSize: 24,
                       fontWeight: FontWeight.w800,
                       color: AppColors.textPrimary)),
               const SizedBox(height: 6),
               Text(message,
-                  style: GoogleFonts.dmSans(
+                  style: GoogleFonts.inter(
                       fontSize: 13, color: AppColors.textSecond),
                   textAlign: TextAlign.center),
               const SizedBox(height: 28),
@@ -71,7 +71,7 @@ class ConfirmationScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Text('Entry QR Code',
-                        style: GoogleFonts.syne(
+                        style: GoogleFonts.inter(
                             fontSize: 13,
                             fontWeight: FontWeight.w700,
                             color: AppColors.textSecond,
@@ -85,14 +85,14 @@ class ConfirmationScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     Text(qrCode,
-                        style: GoogleFonts.dmSans(
+                        style: GoogleFonts.inter(
                             fontSize: 13,
                             fontWeight: FontWeight.w600,
                             color: AppColors.textSecond,
                             letterSpacing: 1.5)),
                     const SizedBox(height: 4),
                     Text('Show this QR at the facility entrance',
-                        style: GoogleFonts.dmSans(
+                        style: GoogleFonts.inter(
                             fontSize: 11, color: AppColors.textMuted)),
                   ],
                 ),
@@ -138,7 +138,7 @@ class ConfirmationScreen extends StatelessWidget {
                     const Icon(Icons.verified, color: AppColors.green, size: 16),
                     const SizedBox(width: 6),
                     Text('Payment Successful · ₹$totalAmount paid',
-                        style: GoogleFonts.dmSans(
+                        style: GoogleFonts.inter(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
                             color: AppColors.green)),
@@ -162,7 +162,7 @@ class ConfirmationScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16)),
                   ),
                   child: Text('Back to Home',
-                      style: GoogleFonts.syne(
+                      style: GoogleFonts.inter(
                           fontSize: 15, fontWeight: FontWeight.w700)),
                 ),
               ),
@@ -179,11 +179,11 @@ class ConfirmationScreen extends StatelessWidget {
         Icon(icon, size: 16, color: AppColors.textMuted),
         const SizedBox(width: 10),
         Text(label,
-            style: GoogleFonts.dmSans(
+            style: GoogleFonts.inter(
                 fontSize: 12, color: AppColors.textSecond)),
         const Spacer(),
         Text(value,
-            style: GoogleFonts.dmSans(
+            style: GoogleFonts.inter(
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
                 color: AppColors.textPrimary)),

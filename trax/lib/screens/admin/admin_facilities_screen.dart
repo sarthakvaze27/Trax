@@ -57,13 +57,13 @@ class _AdminFacilitiesScreenState extends State<AdminFacilitiesScreen> {
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Text('Update Price',
-            style: GoogleFonts.syne(fontWeight: FontWeight.w700)),
+            style: GoogleFonts.inter(fontWeight: FontWeight.w700)),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(f['name'] ?? '',
-                style: GoogleFonts.dmSans(
+                style: GoogleFonts.inter(
                     fontSize: 13, color: AppColors.textSecond)),
             const SizedBox(height: 14),
             TextField(
@@ -72,7 +72,7 @@ class _AdminFacilitiesScreenState extends State<AdminFacilitiesScreen> {
               decoration: InputDecoration(
                 labelText: 'Price per hour (₹)',
                 labelStyle:
-                    GoogleFonts.dmSans(color: AppColors.textSecond),
+                    GoogleFonts.inter(color: AppColors.textSecond),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12)),
                 prefixText: '₹ ',
@@ -84,7 +84,7 @@ class _AdminFacilitiesScreenState extends State<AdminFacilitiesScreen> {
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text('Cancel',
-                style: GoogleFonts.dmSans(color: AppColors.textSecond)),
+                style: GoogleFonts.inter(color: AppColors.textSecond)),
           ),
           ElevatedButton(
             onPressed: () async {
@@ -112,7 +112,7 @@ class _AdminFacilitiesScreenState extends State<AdminFacilitiesScreen> {
             style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.green),
             child: Text('Save',
-                style: GoogleFonts.dmSans(
+                style: GoogleFonts.inter(
                     fontWeight: FontWeight.w700, color: Colors.white)),
           ),
         ],
@@ -126,7 +126,7 @@ class _AdminFacilitiesScreenState extends State<AdminFacilitiesScreen> {
       backgroundColor: AppColors.surface,
       appBar: AppBar(
         title: Text('Facilities',
-            style: GoogleFonts.syne(
+            style: GoogleFonts.inter(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
                 color: Colors.white)),
@@ -188,12 +188,12 @@ class _AdminFacilitiesScreenState extends State<AdminFacilitiesScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(f['name'] ?? '',
-                          style: GoogleFonts.syne(
+                          style: GoogleFonts.inter(
                               fontSize: 15,
                               fontWeight: FontWeight.w700,
                               color: Colors.white)),
                       Text('${f['location']} · ${f['sag_tag'] ?? ''}',
-                          style: GoogleFonts.dmSans(
+                          style: GoogleFonts.inter(
                               fontSize: 11, color: Colors.white60)),
                     ],
                   ),
@@ -280,7 +280,7 @@ class _AdminFacilitiesScreenState extends State<AdminFacilitiesScreen> {
                         onPressed: () => _showEditPrice(f),
                         icon: const Icon(Icons.edit, size: 14),
                         label: Text('Edit Price',
-                            style: GoogleFonts.dmSans(
+                            style: GoogleFonts.inter(
                                 fontSize: 12, fontWeight: FontWeight.w600)),
                         style: OutlinedButton.styleFrom(
                           foregroundColor: AppColors.green,
@@ -298,7 +298,7 @@ class _AdminFacilitiesScreenState extends State<AdminFacilitiesScreen> {
                         icon: Icon(
                             isOpen ? Icons.close : Icons.check, size: 14),
                         label: Text(isOpen ? 'Close Facility' : 'Open Facility',
-                            style: GoogleFonts.dmSans(
+                            style: GoogleFonts.inter(
                                 fontSize: 12, fontWeight: FontWeight.w600)),
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
@@ -330,12 +330,12 @@ class _AdminFacilitiesScreenState extends State<AdminFacilitiesScreen> {
         child: Column(
           children: [
             Text(value,
-                style: GoogleFonts.syne(
+                style: GoogleFonts.inter(
                     fontSize: 13,
                     fontWeight: FontWeight.w800,
                     color: color)),
             Text(label,
-                style: GoogleFonts.dmSans(
+                style: GoogleFonts.inter(
                     fontSize: 10, color: AppColors.textMuted)),
           ],
         ),
@@ -349,7 +349,7 @@ class _AdminFacilitiesScreenState extends State<AdminFacilitiesScreen> {
       decoration:
           BoxDecoration(color: bg, borderRadius: BorderRadius.circular(6)),
       child: Text(label,
-          style: GoogleFonts.dmSans(
+          style: GoogleFonts.inter(
               fontSize: 10, fontWeight: FontWeight.w500, color: fg)),
     );
   }

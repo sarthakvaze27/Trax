@@ -68,12 +68,12 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('SAG Admin Portal',
-                                style: GoogleFonts.syne(
+                                style: GoogleFonts.inter(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w800,
                                     color: Colors.white)),
                             Text('Sports Authority of Goa',
-                                style: GoogleFonts.dmSans(
+                                style: GoogleFonts.inter(
                                     fontSize: 12, color: Colors.white38)),
                           ],
                         ),
@@ -91,7 +91,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                                 color: AppColors.accent, size: 14),
                             const SizedBox(width: 5),
                             Text('Admin',
-                                style: GoogleFonts.dmSans(
+                                style: GoogleFonts.inter(
                                     fontSize: 12,
                                     color: AppColors.accent,
                                     fontWeight: FontWeight.w700)),
@@ -122,7 +122,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Overview',
-                          style: GoogleFonts.syne(
+                          style: GoogleFonts.inter(
                               fontSize: 14,
                               fontWeight: FontWeight.w700,
                               color: AppColors.textSecond,
@@ -181,7 +181,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(16, 20, 16, 8),
                   child: Text('Facility Utilization',
-                      style: GoogleFonts.syne(
+                      style: GoogleFonts.inter(
                           fontSize: 14,
                           fontWeight: FontWeight.w700,
                           color: AppColors.textSecond,
@@ -230,11 +230,11 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
           ),
           const SizedBox(height: 10),
           Text(value,
-              style: GoogleFonts.syne(
+              style: GoogleFonts.inter(
                   fontSize: 22, fontWeight: FontWeight.w800, color: color)),
           const SizedBox(height: 2),
           Text(label,
-              style: GoogleFonts.dmSans(
+              style: GoogleFonts.inter(
                   fontSize: 11, color: AppColors.textMuted)),
         ],
       ),
@@ -267,13 +267,13 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                     style: const TextStyle(fontSize: 18)),
                 const SizedBox(width: 10),
                 Text(f['name'] ?? '',
-                    style: GoogleFonts.dmSans(
+                    style: GoogleFonts.inter(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
                         color: AppColors.textPrimary)),
               ]),
               Text('$util%',
-                  style: GoogleFonts.syne(
+                  style: GoogleFonts.inter(
                       fontSize: 14,
                       fontWeight: FontWeight.w800,
                       color: barColor)),

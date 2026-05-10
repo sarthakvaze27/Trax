@@ -43,7 +43,7 @@ class ProfileScreen extends StatelessWidget {
                     child: Center(
                       child: Text(
                         (auth.userName ?? 'U')[0].toUpperCase(),
-                        style: GoogleFonts.syne(
+                        style: GoogleFonts.inter(
                             fontSize: 32,
                             fontWeight: FontWeight.w800,
                             color: Colors.white),
@@ -52,7 +52,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   Text(auth.userName ?? 'Athlete',
-                      style: GoogleFonts.syne(
+                      style: GoogleFonts.inter(
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
                           color: Colors.white)),
@@ -65,7 +65,7 @@ class ProfileScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text('SportSetu Member',
-                        style: GoogleFonts.dmSans(
+                        style: GoogleFonts.inter(
                             fontSize: 12, color: Colors.white70)),
                   ),
                 ],
@@ -102,10 +102,10 @@ class ProfileScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('Loyalty Points',
-                              style: GoogleFonts.dmSans(
+                              style: GoogleFonts.inter(
                                   fontSize: 12, color: Colors.white70)),
                           Text('${auth.user?['loyalty_points'] ?? 0} pts',
-                              style: GoogleFonts.syne(
+                              style: GoogleFonts.inter(
                                   fontSize: 22,
                                   fontWeight: FontWeight.w800,
                                   color: Colors.white)),
@@ -113,7 +113,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     Text('Earn 1pt\nper ₹10 spent',
-                        style: GoogleFonts.dmSans(
+                        style: GoogleFonts.inter(
                             fontSize: 10,
                             color: Colors.white70,
                             height: 1.4)),
@@ -131,7 +131,7 @@ class ProfileScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Account',
-                      style: GoogleFonts.syne(
+                      style: GoogleFonts.inter(
                           fontSize: 13,
                           fontWeight: FontWeight.w700,
                           color: AppColors.textSecond,
@@ -157,7 +157,7 @@ class ProfileScreen extends StatelessWidget {
                   ]),
                   const SizedBox(height: 16),
                   Text('Support',
-                      style: GoogleFonts.syne(
+                      style: GoogleFonts.inter(
                           fontSize: 13,
                           fontWeight: FontWeight.w700,
                           color: AppColors.textSecond,
@@ -184,7 +184,7 @@ class ProfileScreen extends StatelessWidget {
                   ]),
                   const SizedBox(height: 16),
                   Text('App Info',
-                      style: GoogleFonts.syne(
+                      style: GoogleFonts.inter(
                           fontSize: 13,
                           fontWeight: FontWeight.w700,
                           color: AppColors.textSecond,
@@ -220,16 +220,16 @@ class ProfileScreen extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20)),
                             title: Text('Sign Out',
-                                style: GoogleFonts.syne(
+                                style: GoogleFonts.inter(
                                     fontWeight: FontWeight.w700)),
                             content: Text('Are you sure you want to sign out?',
-                                style: GoogleFonts.dmSans(fontSize: 13)),
+                                style: GoogleFonts.inter(fontSize: 13)),
                             actions: [
                               TextButton(
                                 onPressed: () =>
                                     Navigator.pop(context, false),
                                 child: Text('Cancel',
-                                    style: GoogleFonts.dmSans(
+                                    style: GoogleFonts.inter(
                                         color: AppColors.textSecond)),
                               ),
                               ElevatedButton(
@@ -238,7 +238,7 @@ class ProfileScreen extends StatelessWidget {
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: AppColors.red),
                                 child: Text('Sign Out',
-                                    style: GoogleFonts.dmSans(
+                                    style: GoogleFonts.inter(
                                         color: Colors.white)),
                               ),
                             ],
@@ -250,7 +250,7 @@ class ProfileScreen extends StatelessWidget {
                       },
                       icon: const Icon(Icons.logout, color: AppColors.red),
                       label: Text('Sign Out',
-                          style: GoogleFonts.syne(
+                          style: GoogleFonts.inter(
                               fontSize: 15,
                               fontWeight: FontWeight.w700,
                               color: AppColors.red)),
@@ -264,7 +264,7 @@ class ProfileScreen extends StatelessWidget {
                   const SizedBox(height: 8),
                   Center(
                     child: Text('SportSetu Goa v1.0.0 · Sports Authority of Goa',
-                        style: GoogleFonts.dmSans(
+                        style: GoogleFonts.inter(
                             fontSize: 11, color: AppColors.textMuted)),
                   ),
                   const SizedBox(height: 24),
@@ -314,13 +314,13 @@ class ProfileScreen extends StatelessWidget {
         child: Icon(icon, color: AppColors.green, size: 18),
       ),
       title: Text(title,
-          style: GoogleFonts.dmSans(
+          style: GoogleFonts.inter(
               fontSize: 14,
               fontWeight: FontWeight.w600,
               color: AppColors.textPrimary)),
       subtitle: Text(subtitle,
           style:
-              GoogleFonts.dmSans(fontSize: 11, color: AppColors.textMuted)),
+              GoogleFonts.inter(fontSize: 11, color: AppColors.textMuted)),
       trailing: const Icon(Icons.arrow_forward_ios,
           size: 14, color: AppColors.textMuted),
     );
@@ -339,12 +339,12 @@ class ProfileScreen extends StatelessWidget {
       context: context,
       builder: (_) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        title: Text(title, style: GoogleFonts.syne(fontWeight: FontWeight.w700)),
-        content: Text(body, style: GoogleFonts.dmSans(fontSize: 13, height: 1.4)),
+        title: Text(title, style: GoogleFonts.inter(fontWeight: FontWeight.w700)),
+        content: Text(body, style: GoogleFonts.inter(fontSize: 13, height: 1.4)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Close', style: GoogleFonts.dmSans(color: AppColors.green)),
+            child: Text('Close', style: GoogleFonts.inter(color: AppColors.green)),
           ),
         ],
       ),
@@ -374,7 +374,7 @@ class ProfileScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Submit Grievance',
-                    style: GoogleFonts.syne(
+                    style: GoogleFonts.inter(
                         fontSize: 18, fontWeight: FontWeight.w700)),
                 const SizedBox(height: 14),
                 _sheetField(titleCtrl, 'Issue title', Icons.title),
@@ -395,7 +395,7 @@ class ProfileScreen extends StatelessWidget {
                       label: Text(p.toUpperCase()),
                       selected: active,
                       selectedColor: color,
-                      labelStyle: GoogleFonts.dmSans(
+                      labelStyle: GoogleFonts.inter(
                         fontSize: 11,
                         fontWeight: FontWeight.w700,
                         color: active ? Colors.white : AppColors.textSecond,
@@ -430,7 +430,7 @@ class ProfileScreen extends StatelessWidget {
                       );
                     },
                     child: Text('Submit',
-                        style: GoogleFonts.syne(fontWeight: FontWeight.w700)),
+                        style: GoogleFonts.inter(fontWeight: FontWeight.w700)),
                   ),
                 ),
               ],
@@ -446,7 +446,7 @@ class ProfileScreen extends StatelessWidget {
     return TextField(
       controller: ctrl,
       maxLines: maxLines,
-      style: GoogleFonts.dmSans(fontSize: 14),
+      style: GoogleFonts.inter(fontSize: 14),
       decoration: InputDecoration(
         prefixIcon: Icon(icon, color: AppColors.textMuted),
         hintText: hint,

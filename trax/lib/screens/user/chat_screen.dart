@@ -62,7 +62,7 @@ class _ChatScreenState extends State<ChatScreen>
       backgroundColor: AppColors.surface,
       appBar: AppBar(
         title: Text('Messages',
-            style: GoogleFonts.syne(
+            style: GoogleFonts.inter(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
                 color: Colors.white)),
@@ -80,7 +80,7 @@ class _ChatScreenState extends State<ChatScreen>
           indicatorColor: Colors.white,
           labelColor: Colors.white,
           unselectedLabelColor: Colors.white60,
-          labelStyle: GoogleFonts.dmSans(fontWeight: FontWeight.w600),
+          labelStyle: GoogleFonts.inter(fontWeight: FontWeight.w600),
           tabs: const [
             Tab(text: 'Direct Messages'),
             Tab(text: 'Groups'),
@@ -133,18 +133,18 @@ class _ChatScreenState extends State<ChatScreen>
           leading: CircleAvatar(
             backgroundColor: AppColors.green,
             child: Text(initial,
-                style: GoogleFonts.syne(
+                style: GoogleFonts.inter(
                     fontSize: 16,
                     fontWeight: FontWeight.w800,
                     color: Colors.white)),
           ),
           title: Text(name,
-              style: GoogleFonts.dmSans(
+              style: GoogleFonts.inter(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: AppColors.textPrimary)),
           subtitle: Text(c['email'] as String? ?? '',
-              style: GoogleFonts.dmSans(
+              style: GoogleFonts.inter(
                   fontSize: 12, color: AppColors.textMuted)),
           trailing: const Icon(Icons.chevron_right,
               color: AppColors.textMuted, size: 18),
@@ -188,18 +188,18 @@ class _ChatScreenState extends State<ChatScreen>
           leading: CircleAvatar(
             backgroundColor: color,
             child: Text(initial,
-                style: GoogleFonts.syne(
+                style: GoogleFonts.inter(
                     fontSize: 16,
                     fontWeight: FontWeight.w800,
                     color: Colors.white)),
           ),
           title: Text(name,
-              style: GoogleFonts.dmSans(
+              style: GoogleFonts.inter(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: AppColors.textPrimary)),
           subtitle: Text('$memberCount members',
-              style: GoogleFonts.dmSans(
+              style: GoogleFonts.inter(
                   fontSize: 12, color: AppColors.textMuted)),
           trailing: const Icon(Icons.chevron_right,
               color: AppColors.textMuted, size: 18),
@@ -243,7 +243,7 @@ class _ChatScreenState extends State<ChatScreen>
                 ),
                 const SizedBox(height: 16),
                 Text('Create Group',
-                    style: GoogleFonts.syne(
+                    style: GoogleFonts.inter(
                         fontSize: 18, fontWeight: FontWeight.w700)),
                 const SizedBox(height: 16),
                 // Name field
@@ -257,7 +257,7 @@ class _ChatScreenState extends State<ChatScreen>
                     controller: nameCtrl,
                     decoration: InputDecoration(
                       hintText: 'Group name',
-                      hintStyle: GoogleFonts.dmSans(
+                      hintStyle: GoogleFonts.inter(
                           color: AppColors.textMuted),
                       border: InputBorder.none,
                       contentPadding: const EdgeInsets.all(14),
@@ -268,7 +268,7 @@ class _ChatScreenState extends State<ChatScreen>
                 ),
                 const SizedBox(height: 14),
                 Text('Add Members',
-                    style: GoogleFonts.dmSans(
+                    style: GoogleFonts.inter(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                         color: AppColors.textSecond)),
@@ -289,7 +289,7 @@ class _ChatScreenState extends State<ChatScreen>
                                 ? selectedIds.add(cId)
                                 : selectedIds.remove(cId)),
                         title: Text(c['name'] as String? ?? '',
-                            style: GoogleFonts.dmSans(fontSize: 13)),
+                            style: GoogleFonts.inter(fontSize: 13)),
                         activeColor: AppColors.green,
                         dense: true,
                       );
@@ -326,7 +326,7 @@ class _ChatScreenState extends State<ChatScreen>
                           borderRadius: BorderRadius.circular(16)),
                     ),
                     child: Text('Create Group',
-                        style: GoogleFonts.syne(
+                        style: GoogleFonts.inter(
                             fontSize: 15,
                             fontWeight: FontWeight.w700)),
                   ),
@@ -349,13 +349,13 @@ class _ChatScreenState extends State<ChatScreen>
               size: 56, color: AppColors.textMuted),
           const SizedBox(height: 12),
           Text(title,
-              style: GoogleFonts.syne(
+              style: GoogleFonts.inter(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
                   color: AppColors.textPrimary)),
           const SizedBox(height: 4),
           Text(sub,
-              style: GoogleFonts.dmSans(
+              style: GoogleFonts.inter(
                   fontSize: 13, color: AppColors.textMuted)),
         ],
       ),

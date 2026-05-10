@@ -52,7 +52,7 @@ class _ExploreScreenState extends State<ExploreScreen>
       backgroundColor: AppColors.surface,
       appBar: AppBar(
         title: Text('Explore',
-            style: GoogleFonts.syne(
+            style: GoogleFonts.inter(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
                 color: Colors.white)),
@@ -71,7 +71,7 @@ class _ExploreScreenState extends State<ExploreScreen>
           indicatorColor: Colors.white,
           labelColor: Colors.white,
           unselectedLabelColor: Colors.white60,
-          labelStyle: GoogleFonts.dmSans(fontWeight: FontWeight.w600),
+          labelStyle: GoogleFonts.inter(fontWeight: FontWeight.w600),
           tabs: const [
             Tab(text: 'Tournaments'),
             Tab(text: 'All Facilities'),
@@ -142,7 +142,7 @@ class _ExploreScreenState extends State<ExploreScreen>
               children: [
                 Expanded(
                   child: Text(t['name'] ?? '',
-                      style: GoogleFonts.syne(
+                      style: GoogleFonts.inter(
                           fontSize: 15,
                           fontWeight: FontWeight.w700,
                           color: AppColors.textPrimary)),
@@ -154,7 +154,7 @@ class _ExploreScreenState extends State<ExploreScreen>
                       color: statusBg,
                       borderRadius: BorderRadius.circular(8)),
                   child: Text((t['status'] as String).toUpperCase(),
-                      style: GoogleFonts.dmSans(
+                      style: GoogleFonts.inter(
                           fontSize: 10,
                           fontWeight: FontWeight.w700,
                           color: statusColor)),
@@ -175,7 +175,7 @@ class _ExploreScreenState extends State<ExploreScreen>
                   size: 13, color: AppColors.textSecond),
               const SizedBox(width: 5),
               Text('${t['start_date']} → ${t['end_date']}',
-                  style: GoogleFonts.dmSans(
+                  style: GoogleFonts.inter(
                       fontSize: 12, color: AppColors.textSecond)),
             ]),
             const SizedBox(height: 10),
@@ -184,10 +184,10 @@ class _ExploreScreenState extends State<ExploreScreen>
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text('Teams: $reg / $max',
-                    style: GoogleFonts.dmSans(
+                    style: GoogleFonts.inter(
                         fontSize: 12, color: AppColors.textSecond)),
                 Text('${(fill * 100).toStringAsFixed(0)}% full',
-                    style: GoogleFonts.dmSans(
+                    style: GoogleFonts.inter(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                         color: AppColors.green)),
@@ -234,7 +234,7 @@ class _ExploreScreenState extends State<ExploreScreen>
                       borderRadius: BorderRadius.circular(12)),
                 ),
                 child: Text('Register Interest',
-                    style: GoogleFonts.dmSans(
+                    style: GoogleFonts.inter(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
                         color: AppColors.green)),
@@ -294,12 +294,12 @@ class _ExploreScreenState extends State<ExploreScreen>
                         color: Colors.white70, size: 28),
                     const SizedBox(height: 6),
                     Text('${_facilities.length} Facilities Across Goa',
-                        style: GoogleFonts.syne(
+                        style: GoogleFonts.inter(
                             color: Colors.white,
                             fontWeight: FontWeight.w700,
                             fontSize: 14)),
                     Text('Panaji · Margao · Vasco · Mapusa',
-                        style: GoogleFonts.dmSans(
+                        style: GoogleFonts.inter(
                             color: Colors.white60, fontSize: 11)),
                   ],
                 ),
@@ -341,7 +341,7 @@ class _ExploreScreenState extends State<ExploreScreen>
                   style: const TextStyle(fontSize: 22))),
         ),
         title: Text(f['name'] ?? '',
-            style: GoogleFonts.syne(
+            style: GoogleFonts.inter(
                 fontSize: 14,
                 fontWeight: FontWeight.w700,
                 color: AppColors.textPrimary)),
@@ -353,7 +353,7 @@ class _ExploreScreenState extends State<ExploreScreen>
               const Icon(Icons.location_on, size: 11, color: AppColors.textSecond),
               const SizedBox(width: 3),
               Text('${f['location']} · ${f['distance_km']} km',
-                  style: GoogleFonts.dmSans(
+                  style: GoogleFonts.inter(
                       fontSize: 11, color: AppColors.textSecond)),
             ]),
             const SizedBox(height: 4),
@@ -371,12 +371,12 @@ class _ExploreScreenState extends State<ExploreScreen>
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text('₹${f['price_per_hr']}',
-                style: GoogleFonts.syne(
+                style: GoogleFonts.inter(
                     fontSize: 14,
                     fontWeight: FontWeight.w800,
                     color: AppColors.green)),
             Text('/hr',
-                style: GoogleFonts.dmSans(
+                style: GoogleFonts.inter(
                     fontSize: 10, color: AppColors.textMuted)),
           ],
         ),
@@ -421,10 +421,10 @@ class _ExploreScreenState extends State<ExploreScreen>
                 ),
                 const SizedBox(height: 16),
                 Text('Submit Grievance',
-                    style: GoogleFonts.syne(
+                    style: GoogleFonts.inter(
                         fontSize: 18, fontWeight: FontWeight.w700)),
                 Text('Report a facility issue to SAG administration',
-                    style: GoogleFonts.dmSans(
+                    style: GoogleFonts.inter(
                         fontSize: 12, color: AppColors.textMuted)),
                 const SizedBox(height: 20),
                 _inputField(titleCtrl, 'Issue Title', Icons.title),
@@ -438,11 +438,11 @@ class _ExploreScreenState extends State<ExploreScreen>
                   child: TextField(
                     controller: descCtrl,
                     maxLines: 3,
-                    style: GoogleFonts.dmSans(
+                    style: GoogleFonts.inter(
                         fontSize: 14, color: AppColors.textPrimary),
                     decoration: InputDecoration(
                       hintText: 'Describe the issue...',
-                      hintStyle: GoogleFonts.dmSans(
+                      hintStyle: GoogleFonts.inter(
                           fontSize: 14, color: AppColors.textMuted),
                       border: InputBorder.none,
                       contentPadding: const EdgeInsets.all(14),
@@ -452,7 +452,7 @@ class _ExploreScreenState extends State<ExploreScreen>
                 const SizedBox(height: 12),
                 // Priority selector
                 Text('Priority',
-                    style: GoogleFonts.dmSans(
+                    style: GoogleFonts.inter(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                         color: AppColors.textSecond)),
@@ -481,7 +481,7 @@ class _ExploreScreenState extends State<ExploreScreen>
                           ),
                         ),
                         child: Text(p.toUpperCase(),
-                            style: GoogleFonts.dmSans(
+                            style: GoogleFonts.inter(
                                 fontSize: 11,
                                 fontWeight: FontWeight.w700,
                                 color: priority == p
@@ -529,7 +529,7 @@ class _ExploreScreenState extends State<ExploreScreen>
                           borderRadius: BorderRadius.circular(16)),
                     ),
                     child: Text('Submit Grievance',
-                        style: GoogleFonts.syne(
+                        style: GoogleFonts.inter(
                             fontSize: 15, fontWeight: FontWeight.w700)),
                   ),
                 ),
@@ -551,13 +551,13 @@ class _ExploreScreenState extends State<ExploreScreen>
       ),
       child: TextField(
         controller: ctrl,
-        style: GoogleFonts.dmSans(fontSize: 14, color: AppColors.textPrimary),
+        style: GoogleFonts.inter(fontSize: 14, color: AppColors.textPrimary),
         decoration: InputDecoration(
           prefixIcon:
               Icon(icon, color: AppColors.textMuted, size: 20),
           hintText: hint,
           hintStyle:
-              GoogleFonts.dmSans(fontSize: 14, color: AppColors.textMuted),
+              GoogleFonts.inter(fontSize: 14, color: AppColors.textMuted),
           border: InputBorder.none,
           contentPadding: const EdgeInsets.symmetric(vertical: 14),
         ),
@@ -570,7 +570,7 @@ class _ExploreScreenState extends State<ExploreScreen>
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
       decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(6)),
       child: Text(label,
-          style: GoogleFonts.dmSans(
+          style: GoogleFonts.inter(
               fontSize: 10, fontWeight: FontWeight.w600, color: fg)),
     );
   }
@@ -581,14 +581,14 @@ class _ExploreScreenState extends State<ExploreScreen>
         Icon(icon, size: 56, color: AppColors.textMuted),
         const SizedBox(height: 12),
         Text(title,
-            style: GoogleFonts.syne(
+            style: GoogleFonts.inter(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
                 color: AppColors.textPrimary)),
         const SizedBox(height: 4),
         Text(sub,
             style:
-                GoogleFonts.dmSans(fontSize: 13, color: AppColors.textMuted)),
+                GoogleFonts.inter(fontSize: 13, color: AppColors.textMuted)),
       ]),
     );
   }
