@@ -1,0 +1,47 @@
+name: trax
+description: Trax — Sports Authority of Goa booking app
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # HTTP & networking
+  http: ^1.2.0
+
+  # State management
+  provider: ^6.1.2
+
+  # Auth & storage
+  shared_preferences: ^2.2.2
+
+  # WebSocket
+  web_socket_channel: ^2.4.0
+
+  # Fonts
+  google_fonts: ^6.2.1
+
+  # QR code generation
+  qr_flutter: ^4.1.0
+
+  # Map — flutter_map uses Leaflet/OpenStreetMap tiles (no API key required)
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.0
+
+  # Date formatting
+  intl: ^0.19.0
+
+  # Icons
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
