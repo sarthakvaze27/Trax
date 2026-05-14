@@ -7,7 +7,7 @@ typedef WsEventCallback = void Function(
     String event, Map<String, dynamic> data);
 
 class WebSocketService {
-  static const String _wsBase = 'wss://https://trax-uc1u.onrender.com/ws';
+  static const String _wsBase = 'wss://trax-uc1u.onrender.com/ws';
 
   WebSocketChannel? _updateChannel;
   WebSocketChannel? _chatChannel;
