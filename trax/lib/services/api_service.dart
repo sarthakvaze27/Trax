@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
   // ── Change this to your machine IP when testing on a physical device ────────
-  static const String baseUrl = 'http://192.168.137.1:8000/api';
+  static const String baseUrl = 'https://trax-uc1u.onrender.com';
 
   // ── Auth token ───────────────────────────────────────────────────────────────
   static Future<String?> _token() async {
