@@ -3,7 +3,8 @@ import 'dart:convert';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-typedef WsEventCallback = void Function(String event, Map<String, dynamic> data);
+typedef WsEventCallback = void Function(
+    String event, Map<String, dynamic> data);
 
 class WebSocketService {
   static const String _wsBase = 'ws://192.168.137.1:8000/ws';
@@ -12,18 +13,23 @@ class WebSocketService {
   WebSocketChannel? _chatChannel;
 
   final List<WsEventCallback> _updateListeners = [];
-  final List<WsEventCallback> _chatListeners   = [];
+  final List<WsEventCallback> _chatListeners = [];
 
   Timer? _pingTimer;
+  bool _updatesConnected = false;
+  bool _shouldReconnectUpdates = false;
 
   // ── Connect to global updates channel ────────────────────────────────────
   void connectUpdates() {
+    _shouldReconnectUpdates = true;
+    if (_updatesConnected) return;
+    _updatesConnected = true;
     _updateChannel = WebSocketChannel.connect(Uri.parse('$_wsBase/updates'));
     _updateChannel!.stream.listen(
       (raw) {
         final msg = jsonDecode(raw as String) as Map<String, dynamic>;
         final event = msg['event'] as String? ?? '';
-        final data  = msg['data']  as Map<String, dynamic>? ?? {};
+        final data = msg['data'] as Map<String, dynamic>? ?? {};
         for (final cb in _updateListeners) {
           cb(event, data);
         }
@@ -40,10 +46,15 @@ class WebSocketService {
   }
 
   void _reconnectUpdates() {
+    _updatesConnected = false;
+    if (!_shouldReconnectUpdates) return;
     Future.delayed(const Duration(seconds: 3), connectUpdates);
   }
 
-  void addUpdateListener(WsEventCallback cb) => _updateListeners.add(cb);
+  void addUpdateListener(WsEventCallback cb) {
+    if (!_updateListeners.contains(cb)) _updateListeners.add(cb);
+  }
+
   void removeUpdateListener(WsEventCallback cb) => _updateListeners.remove(cb);
 
   // ── Connect to chat room ──────────────────────────────────────────────────
@@ -58,7 +69,7 @@ class WebSocketService {
       (raw) {
         final msg = jsonDecode(raw as String) as Map<String, dynamic>;
         final event = msg['event'] as String? ?? '';
-        final data  = msg['data']  as Map<String, dynamic>? ?? {};
+        final data = msg['data'] as Map<String, dynamic>? ?? {};
         for (final cb in _chatListeners) {
           cb(event, data);
         }
@@ -69,7 +80,8 @@ class WebSocketService {
   }
 
   void sendChatMessage(String text, {String? groupId}) {
-    final payload = jsonEncode({'text': text, if (groupId != null) 'group_id': groupId});
+    final payload =
+        jsonEncode({'text': text, if (groupId != null) 'group_id': groupId});
     _chatChannel?.sink.add(payload);
   }
 
@@ -83,9 +95,15 @@ class WebSocketService {
   }
 
   void dispose() {
+    _shouldReconnectUpdates = false;
     _pingTimer?.cancel();
     _updateChannel?.sink.close();
     _chatChannel?.sink.close();
+    _updatesConnected = false;
+    _updateChannel = null;
+    _chatChannel = null;
+    _updateListeners.clear();
+    _chatListeners.clear();
   }
 }
 

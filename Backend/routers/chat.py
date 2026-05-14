@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Query
 from pydantic import BaseModel
 from bson import ObjectId
 from datetime import datetime, UTC
@@ -22,6 +22,14 @@ class CreateGroup(BaseModel):
     name: str
     member_ids: list[str]
     avatar_color: str = "#4CAF50"
+
+class CreateBroadcast(BaseModel):
+    title: str
+    message: str
+    facility_name: str = ""
+    location: str = ""
+    date: str = ""
+    time_label: str = ""
 
 # ── Get message history for a room ────────────────────────────────────────────
 @router.get("/history/{room_id}")
@@ -87,5 +95,43 @@ async def my_groups(db=Depends(get_db), user=Depends(get_current_user)):
     result = []
     for d in docs:
         d["id"] = str(d.pop("_id"))
+        result.append(d)
+    return result
+
+# ── Public player broadcasts ─────────────────────────────────────────────────
+@router.post("/broadcasts")
+async def create_broadcast(body: CreateBroadcast, db=Depends(get_db), user=Depends(get_current_user)):
+    doc = {
+        "title": body.title,
+        "message": body.message,
+        "facility_name": body.facility_name,
+        "location": body.location,
+        "date": body.date,
+        "time_label": body.time_label,
+        "created_by": str(user["_id"]),
+        "created_by_name": user.get("name", "Player"),
+        "created_at": datetime.now(UTC),
+    }
+    result = await db.broadcasts.insert_one(doc)
+    doc["_id"] = result.inserted_id
+    doc["id"] = str(doc.pop("_id"))
+    doc["created_at"] = doc["created_at"].isoformat()
+    return doc
+
+@router.get("/broadcasts")
+async def list_broadcasts(
+    location: Optional[str] = Query(default=None),
+    db=Depends(get_db),
+    user=Depends(get_current_user),
+):
+    query = {}
+    if location:
+        query["location"] = {"$regex": f"^{location}$", "$options": "i"}
+    docs = await db.broadcasts.find(query).sort("created_at", -1).to_list(100)
+    result = []
+    for d in docs:
+        d["id"] = str(d.pop("_id"))
+        d["is_mine"] = d.get("created_by") == str(user["_id"])
+        d["created_at"] = d.get("created_at", datetime.now(UTC)).isoformat()
         result.append(d)
     return result

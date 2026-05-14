@@ -59,7 +59,7 @@ class _UserShellState extends State<UserShell> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(index: _idx, children: _screens),
+      body: _screens[_idx],
       bottomNavigationBar: _UserBottomBar(
         selectedIndex: _idx,
         labels: _labels,

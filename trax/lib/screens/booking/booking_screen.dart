@@ -2,7 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import '../../app_colors.dart';
+import '../../providers/auth_provider.dart';
 import '../../services/api_service.dart';
 import 'confirmation_screen.dart';
 
@@ -16,10 +18,10 @@ class BookingScreen extends StatefulWidget {
 
 class _BookingScreenState extends State<BookingScreen> {
   DateTime _selectedDate = DateTime.now().add(const Duration(days: 1));
-  List<dynamic> _slots   = [];
-  Set<String>   _picked  = {};
-  bool _loadingSlots     = false;
-  bool _booking          = false;
+  List<dynamic> _slots = [];
+  Set<String> _picked = {};
+  bool _loadingSlots = false;
+  bool _booking = false;
 
   @override
   void initState() {
@@ -31,7 +33,10 @@ class _BookingScreenState extends State<BookingScreen> {
   String get _dateLabel => DateFormat('EEE, MMM d yyyy').format(_selectedDate);
 
   Future<void> _loadSlots() async {
-    setState(() { _loadingSlots = true; _picked = {}; });
+    setState(() {
+      _loadingSlots = true;
+      _picked = {};
+    });
     try {
       final s = await ApiService.getSlots(widget.facility['id'], _dateStr);
       setState(() => _slots = s);
@@ -56,48 +61,164 @@ class _BookingScreenState extends State<BookingScreen> {
     }
   }
 
-  Future<void> _book() async {
+  Future<void> _showPaymentOptions() async {
     if (_picked.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Please select at least one slot')));
       return;
     }
+    int splitCount = 2;
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (_) => StatefulBuilder(
+        builder: (ctx, setSheet) => Container(
+          padding: const EdgeInsets.all(20),
+          decoration: const BoxDecoration(
+            color: AppColors.card,
+            borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Payment',
+                  style: GoogleFonts.inter(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w800,
+                      color: AppColors.textPrimary)),
+              const SizedBox(height: 6),
+              Text('Pay yourself or split the amount with friends.',
+                  style: GoogleFonts.inter(
+                      fontSize: 12, color: AppColors.textMuted)),
+              const SizedBox(height: 16),
+              _paymentOption(
+                icon: Icons.account_balance_wallet_outlined,
+                title: 'Pay full amount',
+                subtitle: 'Confirm booking with one payment',
+                onTap: () {
+                  Navigator.pop(ctx);
+                  _book(splitCount: 1);
+                },
+              ),
+              const SizedBox(height: 10),
+              Container(
+                padding: const EdgeInsets.all(14),
+                decoration: BoxDecoration(
+                  color: AppColors.surface,
+                  borderRadius: BorderRadius.circular(14),
+                  border: Border.all(color: AppColors.border),
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(Icons.group_outlined,
+                            color: AppColors.green, size: 20),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Text('Split with friends',
+                              style: GoogleFonts.inter(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.textPrimary)),
+                        ),
+                        IconButton(
+                          onPressed: splitCount > 2
+                              ? () => setSheet(() => splitCount--)
+                              : null,
+                          icon: const Icon(Icons.remove_circle_outline),
+                          color: AppColors.green,
+                        ),
+                        Text('$splitCount',
+                            style: GoogleFonts.inter(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w800,
+                                color: AppColors.textPrimary)),
+                        IconButton(
+                          onPressed: splitCount < 12
+                              ? () => setSheet(() => splitCount++)
+                              : null,
+                          icon: const Icon(Icons.add_circle_outline),
+                          color: AppColors.green,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton.icon(
+                        onPressed: () {
+                          Navigator.pop(ctx);
+                          _book(splitCount: splitCount);
+                        },
+                        icon: const Icon(Icons.link_rounded, size: 18),
+                        label: Text(
+                            'Generate ${splitCount - 1} friend payment links'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColors.green,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _book({required int splitCount}) async {
     setState(() => _booking = true);
     try {
       // Build label e.g. "08:00 – 10:00"
       final sortedSlots = _picked.toList()..sort();
       final first = int.parse(sortedSlots.first);
-      final last  = int.parse(sortedSlots.last) + 1;
+      final last = int.parse(sortedSlots.last) + 1;
       final timeLabel =
           '${first.toString().padLeft(2, '0')}:00 – ${last.toString().padLeft(2, '0')}:00';
 
       final result = await ApiService.createBooking(
         facilityId: widget.facility['id'],
-        date:       _dateStr,
-        slots:      sortedSlots,
-        timeLabel:  timeLabel,
+        date: _dateStr,
+        slots: sortedSlots,
+        timeLabel: timeLabel,
+        splitCount: splitCount,
       );
+
+      if (mounted) {
+        await Provider.of<AuthProvider>(context, listen: false).refreshUser();
+      }
 
       if (mounted) {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (_) => ConfirmationScreen(
-              bookingId:    result['booking_id'],
-              qrCode:       result['qr_code'],
+              bookingId: result['booking_id'],
+              qrCode: result['qr_code'],
               facilityName: result['facility_name'],
-              date:         result['date'],
-              timeLabel:    result['time_label'],
-              totalAmount:  result['total_amount'] as int,
-              message:      result['message'],
+              date: result['date'],
+              timeLabel: result['time_label'],
+              totalAmount: result['total_amount'] as int,
+              facilityLocation: result['facility_location'] as String? ?? '',
+              paymentMode: result['payment_mode'] as String? ?? 'solo',
+              splitCount: result['split_count'] as int? ?? 1,
+              shareAmount: result['share_amount'] as int? ?? 0,
+              paymentLinks: (result['payment_links'] as List<dynamic>?) ?? [],
+              message: result['message'],
             ),
           ),
         );
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(e.toString().replaceFirst('Exception: ', ''))));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(e.toString().replaceFirst('Exception: ', ''))));
       }
     }
     if (mounted) setState(() => _booking = false);
@@ -155,8 +276,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                     color: AppColors.textPrimary)),
                             Text(f['location'] ?? '',
                                 style: GoogleFonts.inter(
-                                    fontSize: 12,
-                                    color: AppColors.textSecond)),
+                                    fontSize: 12, color: AppColors.textSecond)),
                             Text('₹$pricePerHr / hour',
                                 style: GoogleFonts.inter(
                                     fontSize: 13,
@@ -212,7 +332,8 @@ class _BookingScreenState extends State<BookingScreen> {
                               fontWeight: FontWeight.w700,
                               color: AppColors.textPrimary)),
                       Row(children: [
-                        _legend(AppColors.green50, AppColors.green, 'Available'),
+                        _legend(
+                            AppColors.green50, AppColors.green, 'Available'),
                         const SizedBox(width: 10),
                         _legend(AppColors.redLight, AppColors.red, 'Booked'),
                         const SizedBox(width: 10),
@@ -223,8 +344,8 @@ class _BookingScreenState extends State<BookingScreen> {
                   const SizedBox(height: 10),
                   _loadingSlots
                       ? const Center(
-                          child: CircularProgressIndicator(
-                              color: AppColors.green))
+                          child:
+                              CircularProgressIndicator(color: AppColors.green))
                       : GridView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
@@ -237,10 +358,10 @@ class _BookingScreenState extends State<BookingScreen> {
                           ),
                           itemCount: _slots.length,
                           itemBuilder: (_, i) {
-                            final slot   = _slots[i];
-                            final key    = slot['slot_key'] as String;
-                            final avail  = slot['available'] as bool;
-                            final sel    = _picked.contains(key);
+                            final slot = _slots[i];
+                            final key = slot['slot_key'] as String;
+                            final avail = slot['available'] as bool;
+                            final sel = _picked.contains(key);
 
                             Color bg, border, fg;
                             if (!avail) {
@@ -271,12 +392,15 @@ class _BookingScreenState extends State<BookingScreen> {
                                 decoration: BoxDecoration(
                                   color: bg,
                                   borderRadius: BorderRadius.circular(10),
-                                  border:
-                                      Border.all(color: border, width: 1.2),
+                                  border: Border.all(color: border, width: 1.2),
                                 ),
                                 child: Center(
                                   child: Text(
-                                    slot['label'].toString().split('–').first.trim(),
+                                    slot['label']
+                                        .toString()
+                                        .split('–')
+                                        .first
+                                        .trim(),
                                     style: GoogleFonts.inter(
                                         fontSize: 11,
                                         fontWeight: FontWeight.w600,
@@ -298,7 +422,10 @@ class _BookingScreenState extends State<BookingScreen> {
             decoration: const BoxDecoration(
               color: AppColors.card,
               boxShadow: [
-                BoxShadow(color: Colors.black12, blurRadius: 12, offset: Offset(0, -4))
+                BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 12,
+                    offset: Offset(0, -4))
               ],
             ),
             child: Row(children: [
@@ -306,7 +433,8 @@ class _BookingScreenState extends State<BookingScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('${_picked.length} slot${_picked.length != 1 ? 's' : ''} selected',
+                    Text(
+                        '${_picked.length} slot${_picked.length != 1 ? 's' : ''} selected',
                         style: GoogleFonts.inter(
                             fontSize: 12, color: AppColors.textMuted)),
                     Text('₹$total',
@@ -321,7 +449,7 @@ class _BookingScreenState extends State<BookingScreen> {
               SizedBox(
                 height: 48,
                 child: ElevatedButton(
-                  onPressed: _booking ? null : _book,
+                  onPressed: _booking ? null : _showPaymentOptions,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.green,
                     padding: const EdgeInsets.symmetric(horizontal: 28),
@@ -330,7 +458,8 @@ class _BookingScreenState extends State<BookingScreen> {
                   ),
                   child: _booking
                       ? const SizedBox(
-                          width: 20, height: 20,
+                          width: 20,
+                          height: 20,
                           child: CircularProgressIndicator(
                               color: Colors.white, strokeWidth: 2))
                       : Text('Confirm Booking',
@@ -348,7 +477,8 @@ class _BookingScreenState extends State<BookingScreen> {
   Widget _legend(Color bg, Color border, String label) {
     return Row(children: [
       Container(
-        width: 12, height: 12,
+        width: 12,
+        height: 12,
         decoration: BoxDecoration(
           color: bg,
           border: Border.all(color: border),
@@ -359,5 +489,47 @@ class _BookingScreenState extends State<BookingScreen> {
       Text(label,
           style: GoogleFonts.inter(fontSize: 9, color: AppColors.textMuted)),
     ]);
+  }
+
+  Widget _paymentOption({
+    required IconData icon,
+    required String title,
+    required String subtitle,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(14),
+        decoration: BoxDecoration(
+          color: AppColors.surface,
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: AppColors.border),
+        ),
+        child: Row(
+          children: [
+            Icon(icon, color: AppColors.green, size: 22),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title,
+                      style: GoogleFonts.inter(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.textPrimary)),
+                  Text(subtitle,
+                      style: GoogleFonts.inter(
+                          fontSize: 11, color: AppColors.textMuted)),
+                ],
+              ),
+            ),
+            const Icon(Icons.chevron_right,
+                color: AppColors.textMuted, size: 18),
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -1,4 +1,5 @@
 from fastapi import WebSocket
+from fastapi.encoders import jsonable_encoder
 import json
 from typing import Dict, List
 
@@ -27,7 +28,7 @@ class ConnectionManager:
 
     async def broadcast(self, event: str, data: dict):
         """Send an event to all global listeners."""
-        msg = json.dumps({"event": event, "data": data})
+        msg = json.dumps(jsonable_encoder({"event": event, "data": data}))
         dead = []
         for ws in self.active:
             try:
@@ -48,7 +49,7 @@ class ConnectionManager:
             self.rooms[room_id].remove(ws)
 
     async def send_to_room(self, room_id: str, event: str, data: dict):
-        msg = json.dumps({"event": event, "data": data})
+        msg = json.dumps(jsonable_encoder({"event": event, "data": data}))
         if room_id not in self.rooms:
             return
         dead = []

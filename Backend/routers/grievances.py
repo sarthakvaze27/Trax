@@ -6,6 +6,7 @@ from datetime import datetime, UTC
 
 from core.database import get_db
 from core.security import get_current_user, require_admin
+from core.ws_manager import manager
 
 router = APIRouter()
 
@@ -57,7 +58,15 @@ async def submit_grievance(
 
     result = await db.grievances.insert_one(doc)
     doc["_id"] = result.inserted_id
-    return _out(doc)
+    created = _out(doc)
+    await manager.broadcast("grievance_created", {
+        "id": created["id"],
+        "title": created.get("title", ""),
+        "priority": created.get("priority", "medium"),
+        "status": created.get("status", "open"),
+        "submitted_by": created.get("users", {}),
+    })
+    return created
 
 # ── My grievances ─────────────────────────────────────────────────────────────
 @router.get("/my")
@@ -91,4 +100,8 @@ async def update_status(
     )
     if result.matched_count == 0:
         raise HTTPException(status_code=404, detail="Grievance not found")
+    await manager.broadcast("grievance_updated", {
+        "id": grievance_id,
+        "status": body.status,
+    })
     return {"message": f"Status updated to {body.status}"}

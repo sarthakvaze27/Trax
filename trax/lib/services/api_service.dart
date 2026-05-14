@@ -108,6 +108,7 @@ class ApiService {
     required String date,
     required List<String> slots,
     required String timeLabel,
+    int splitCount = 1,
   }) async {
     final res = await http.post(
       Uri.parse('$baseUrl/bookings/'),
@@ -117,6 +118,7 @@ class ApiService {
         'date': date,
         'slots': slots,
         'time_label': timeLabel,
+        'split_count': splitCount,
       }),
     );
     _check(res);
@@ -243,6 +245,15 @@ class ApiService {
     return jsonDecode(res.body) as Map<String, dynamic>;
   }
 
+  static Future<List<dynamic>> getAdminBookings() async {
+    final res = await http.get(
+      Uri.parse('$baseUrl/bookings/admin/all'),
+      headers: await _headers(),
+    );
+    _check(res);
+    return jsonDecode(res.body) as List<dynamic>;
+  }
+
   // ── Chat ──────────────────────────────────────────────────────────────────
   static Future<List<dynamic>> getChatHistory(String roomId) async {
     final res = await http.get(
@@ -287,5 +298,42 @@ class ApiService {
     );
     _check(res);
     return jsonDecode(res.body) as Map<String, dynamic>;
+  }
+
+  static Future<Map<String, dynamic>> createBroadcast({
+    required String title,
+    required String message,
+    String facilityName = '',
+    String location = '',
+    String date = '',
+    String timeLabel = '',
+  }) async {
+    final res = await http.post(
+      Uri.parse('$baseUrl/chat/broadcasts'),
+      headers: await _headers(),
+      body: jsonEncode({
+        'title': title,
+        'message': message,
+        'facility_name': facilityName,
+        'location': location,
+        'date': date,
+        'time_label': timeLabel,
+      }),
+    );
+    _check(res);
+    return jsonDecode(res.body) as Map<String, dynamic>;
+  }
+
+  static Future<List<dynamic>> getBroadcasts({String location = ''}) async {
+    final uri = location.trim().isEmpty
+        ? Uri.parse('$baseUrl/chat/broadcasts')
+        : Uri.parse(
+            '$baseUrl/chat/broadcasts?location=${Uri.encodeQueryComponent(location.trim())}');
+    final res = await http.get(
+      uri,
+      headers: await _headers(),
+    );
+    _check(res);
+    return jsonDecode(res.body) as List<dynamic>;
   }
 }
